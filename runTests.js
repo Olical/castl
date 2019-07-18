@@ -17,7 +17,7 @@
 
 (function () {
     "use strict";
-    process.env['LUA_PATH'] = process.env['LUA_PATH'] + ";/usr/local/lib/node_modules/castl/lua/?.lua;/usr/lib/node_modules/castl/lua/?.lua;";
+    process.env['LUA_PATH'] = process.env['LUA_PATH'] + ";/usr/local/lib/node_modules/castl/lua/?.lua;/usr/lib/node_modules/castl/lua/?.lua;lua/?.lua";
 
     var fs = require("fs");
     var path = require("path");
@@ -106,7 +106,7 @@
         process.stdout.write(testHeader);
 
         // 1. Execute js file
-        code = execSync("nodejs " + file);
+        code = execSync("node " + file);
         if (code > 0) {
             console.log("--> Compilation of js code failed!");
             failed.push({

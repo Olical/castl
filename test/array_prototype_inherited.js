@@ -289,42 +289,6 @@ assert(arr12[2] === 2);
 assert(arr12[3] === 10);
 
 arr12 = new MyClass();
-arr12.push(10, -6, -11, 2);
-ret = arr12.sort(function (a, b) {
-    return a > b
-});
-assert(ret === arr12);
-assert(ret == arr12);
-assert(arr12.length === 4);
-assert(ret.length === 4);
-assert(ret[0] === -11);
-assert(ret[1] === -6);
-assert(ret[2] === 2);
-assert(ret[3] === 10);
-assert(arr12[0] === -11);
-assert(arr12[1] === -6);
-assert(arr12[2] === 2);
-assert(arr12[3] === 10);
-
-arr12 = new MyClass();
-arr12.push(10, -6, -11, 2);
-ret = arr12.sort(function (a, b) {
-    return a < b
-});
-assert(ret === arr12);
-assert(ret == arr12);
-assert(arr12.length === 4);
-assert(ret.length === 4);
-assert(ret[0] === 10);
-assert(ret[1] === 2);
-assert(ret[2] === -6);
-assert(ret[3] === -11);
-assert(arr12[0] === 10);
-assert(arr12[1] === 2);
-assert(arr12[2] === -6);
-assert(arr12[3] === -11);
-
-arr12 = new MyClass();
 arr12.push("C", -6, 11, 2, -30, "b", 100000);
 ret = arr12.sort();
 assert(ret === arr12);
