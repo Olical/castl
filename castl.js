@@ -237,6 +237,7 @@
       var locals = context[0]
       // @number
       if (locals.length > 0) {
+        console.log('locals', locals.length)
         var compiledLocalsDeclaration = buildLocalsDeclarationString(locals)
         compiledProgram.push(compiledLocalsDeclaration)
       }
