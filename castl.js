@@ -237,9 +237,7 @@
       var locals = context[0]
       // @number
       if (locals.length > 0) {
-        console.log('locals', locals.length)
-        var compiledLocalsDeclaration = buildLocalsDeclarationString(locals)
-        compiledProgram.push(compiledLocalsDeclaration)
+        compiledProgram.push(buildLocalsTable())
       }
 
       // Function declarations
@@ -269,6 +267,10 @@
       success: false,
       compiled: ''
     })
+  }
+
+  function buildLocalsTable () {
+    return 'local _locals = _setmetatable({}, _ENV);\n'
   }
 
   /*****************
@@ -2437,9 +2439,7 @@
     // Locals
     // @number
     if (locals.length > 0) {
-      // local that has the same identifier as one of the arguments will not be redefined
-      var compiledLocalsDeclaration = buildLocalsDeclarationString(locals, compiledParams)
-      compiledFunction.push(compiledLocalsDeclaration)
+      compiledFunction.push(buildLocalsTable())
     }
 
     // Function declarations
@@ -2462,30 +2462,6 @@
     compiledFunction.push('end)')
 
     return compiledFunction.join('')
-  }
-
-  function buildLocalsDeclarationString (locals, ignore) {
-    ignore = ignore || []
-    var namesSequence = []
-
-    var i, local, length = locals.length
-    // @number
-    for (i = 0; i < length; ++i) {
-      local = locals.pop()
-      if (ignore.indexOf(local) === -1 && namesSequence.indexOf(local) === -1) {
-        namesSequence.push(local)
-      }
-    }
-
-    // @number
-    if (namesSequence.length > 0) {
-      var compiledLocalsDeclaration = ['local ']
-      compiledLocalsDeclaration.push(namesSequence.join(','))
-      compiledLocalsDeclaration.push(';\n')
-
-      return compiledLocalsDeclaration.join('')
-    }
-    return ''
   }
 
   /*************************
@@ -2518,7 +2494,7 @@
 
     setMeta(identifier, meta)
 
-    return sanitizeIdentifier(identifier.name)
+    return '_locals.' + sanitizeIdentifier(identifier.name))
   }
 
   // http://en.wikipedia.org/wiki/UTF-8#Description

@@ -140,4 +140,6 @@ if _nodejs ~= nil then
     export.require = nodejs.require
 end
 
+export._setmetatable = setmetatable;
+
 return export
