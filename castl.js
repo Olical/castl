@@ -2494,7 +2494,7 @@
 
     setMeta(identifier, meta)
 
-    return '_locals.' + sanitizeIdentifier(identifier.name))
+    return '_locals.' + sanitizeIdentifier(identifier.name)
   }
 
   // http://en.wikipedia.org/wiki/UTF-8#Description
