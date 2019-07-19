@@ -2,6 +2,10 @@ CAST(L): compile JavaScript to Lua
 ==========
 CASTL (Compile Abstract Syntax Tree to Lua) is a free and open source project that allows you to "compile" some JavaScript (ES5 and ES6 through Babel transformation) code to Lua 5.2 or LuaJIT 2 code and run it. (I never tested on Lua 5.3 VM)
 
+## What's in this fork?
+
+I, Olical, am attempting to fix the "too many locals" issue in LuaJIT where you can't have more than 200 locals defined. I'm instead trying to pack them all inside a table called `_locals`. This is mainly so I can compile self hosting ClojureScript programs to Lua and run them inside Neovim natively (https://github.com/Olical/cljs-lua-experiment).
+
 ## Installation
 
 In a terminal:
